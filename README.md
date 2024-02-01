@@ -1,2 +1,2 @@
-# form-survivors-godot
+# Form Survivors
 Vampire-like game made with Godot
