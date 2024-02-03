@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://blatymkqenhre"]
+
+[ext_resource type="PackedScene" uid="uid://u813xsggtl0s" path="res://game/entities/base_entity/base_entity.tscn" id="1_8h4xv"]
+[ext_resource type="Script" path="res://game/entities/enemy/enemy.gd" id="2_7qbnr"]
+
+[node name="Enemy" groups=["enemy"] instance=ExtResource("1_8h4xv")]
+script = ExtResource("2_7qbnr")
+
+[node name="BorderPolygon" type="Polygon2D" parent="." index="3"]
+antialiased = true
+
+[node name="BodyPolygon" type="Polygon2D" parent="." index="4"]
+antialiased = true
+
+[node name="HpPolygon" type="Polygon2D" parent="." index="5"]
+antialiased = true
+
+[node name="CollisionPolygon" type="CollisionPolygon2D" parent="." index="6"]
