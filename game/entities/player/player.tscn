@@ -9,12 +9,21 @@
 radius = 16.0
 
 [node name="Player" groups=["player"] instance=ExtResource("1_no2qp")]
+collision_layer = 12
 script = ExtResource("2_muh2s")
 
 [node name="PlayerCircle" parent="." index="3" instance=ExtResource("3_yx80p")]
 
-[node name="CollisionShape" type="CollisionShape2D" parent="." index="4" groups=["entity", "player"]]
+[node name="CollisionShape" type="CollisionShape2D" parent="." index="4"]
 shape = SubResource("CircleShape2D_0o61a")
 
 [node name="Camera" type="Camera2D" parent="." index="5"]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
+editor_draw_drag_margin = true
 script = ExtResource("3_hkn3d")

@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Form Survivors"
-run/main_scene="res://test.tscn"
+run/main_scene="res://game/arena/arena.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=60
+boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 
 [autoload]
@@ -30,6 +31,7 @@ folder_colors={
 "res://assets/": "yellow",
 "res://core/": "gray",
 "res://game/": "blue",
+"res://game/arena/": "pink",
 "res://game/entities/": "purple",
 "res://game/entities/enemy/": "red",
 "res://game/entities/player/": "blue",
@@ -85,3 +87,15 @@ move_down={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_1="border"
+2d_physics/layer_3="entity"
+2d_physics/layer_4="player"
+2d_physics/layer_5="enemy"
+2d_physics/layer_7="projectile"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

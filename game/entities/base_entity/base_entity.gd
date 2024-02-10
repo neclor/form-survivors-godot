@@ -4,7 +4,7 @@ class_name Entity
 
 @onready var sec_timer = $SecTimer
 @onready var hp_regen_cooldown_timer = $HpRegenCooldownTimer
-@onready var cpu_particles = $CPUParticles
+@onready var die_cpu_particles = $DieCPUParticles
 
 
 #region Draw var
@@ -19,18 +19,22 @@ var body_color : Color
 
 
 #region Move var
-const DEFAULT_SPEED := 100
-var speed := DEFAULT_SPEED
+var speed : int
 var move_direction_vector : Vector2 = Vector2.DOWN
 #endregion
 
 
 #region Health var
-var max_hp := 1
-var hp := 1
-var hp_regen_available := true
-var hp_regen_per_sec := 1
+var max_hp : int
+var hp : int
+var hp_regen_available : bool
+var hp_regen_per_sec : int
 var hp_regen_cooldown := 5
+#endregion
+
+
+#region Attack var
+var attack_damage : int
 #endregion
 
 
@@ -45,7 +49,8 @@ func _on_sec_timer_timeout():
 
 #region Draw functions
 func update_hp_radius():
-	hp_radius = BODY_RADIUS * (hp / max_hp)
+	hp_radius = BODY_RADIUS * hp / max_hp
+	redraw()
 
 func redraw():
 	pass
@@ -65,14 +70,18 @@ func move_step():
 #region Damage functions
 func take_damage(input_damage : int):
 	hp -= input_damage
-
 	update_hp_radius()
-	redraw()
-
+	start_hp_cooldown()
 	if hp <= 0:
 		die()
 
 func die():
+	start_particle_animation()
+
+func start_particle_animation():
+	die_cpu_particles.restart()
+
+func _on_die_cpu_particles_finished():
 	queue_free()
 #endregion
 
@@ -84,7 +93,6 @@ func heal_hp(heal : int):
 		hp = max_hp
 
 	update_hp_radius()
-	redraw()
 
 func hp_regen():
 	if hp < max_hp and hp_regen_available:

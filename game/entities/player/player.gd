@@ -1,7 +1,7 @@
 extends Entity
 
 
-@onready var circle = $Circle
+@onready var player_circle = $PlayerCircle
 
 
 #region Draw var
@@ -12,20 +12,29 @@ const BODY_COLOR = Color("#800000")
 
 #region Init functions
 func _init():
-	max_hp = 10
+	speed = 160
+
+	max_hp = 100
 	hp = max_hp
-	update_hp_radius()
+	hp_regen_available = true
+	hp_regen_per_sec = 5
+
+	attack_damage = 1
+
 	set_color()
 
 func set_color():
 	hp_color = HP_COLOR
 	body_color = BODY_COLOR
+
+func _ready():
+	die_cpu_particles.color = HP_COLOR
 #endregion
 
 
 #region Draw functions
 func redraw():
-	circle.queue_redraw()
+	player_circle.queue_redraw()
 #endregion
 
 

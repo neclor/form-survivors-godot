@@ -4,7 +4,11 @@
 [ext_resource type="Script" path="res://game/entities/enemy/enemy.gd" id="2_7qbnr"]
 
 [node name="Enemy" groups=["enemy"] instance=ExtResource("1_8h4xv")]
+collision_layer = 20
 script = ExtResource("2_7qbnr")
+
+[node name="DieCPUParticles" parent="." index="2"]
+amount = 256
 
 [node name="BorderPolygon" type="Polygon2D" parent="." index="3"]
 antialiased = true
@@ -16,3 +20,11 @@ antialiased = true
 antialiased = true
 
 [node name="CollisionPolygon" type="CollisionPolygon2D" parent="." index="6"]
+
+[node name="HitBox" type="Area2D" parent="." index="7"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="HitBoxCollisionPolygon" type="CollisionPolygon2D" parent="HitBox" index="0"]
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
