@@ -34,7 +34,7 @@ func _on_enemy_spawner_timer_timeout():
 	print(a)
 
 	var new_enemy = Enemy.new(a)
-	#new_enemy.instantiate() ENEMY.instantiate(4)
+	#ENEMY.instantiate(4)
 	add_child(new_enemy)
 	pass
 
