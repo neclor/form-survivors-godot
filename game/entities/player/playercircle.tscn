@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://l5s8rahk6rsc"]
-
-[ext_resource type="Script" path="res://game/entities/player/player_circle.gd" id="1_giyce"]
-
-[node name="PlayerCircle" type="Node2D"]
-script = ExtResource("1_giyce")

@@ -1,46 +1,39 @@
+class_name Player
 extends Entity
 
 
-@onready var player_circle = $PlayerCircle
+@onready var collision_shape = $CollisionShape
+@onready var circle_component = $CircleComponent
 
 
-#region Draw var
+const DEFAULT_SPEED = 160
+const DEFAULT_ATTACK_POWER = 1
+const DEFAULT_HP = 100
 const HP_COLOR = Color.RED
 const BODY_COLOR = Color("#800000")
-#endregion
 
 
-#region Init functions
 func _init():
-	speed = 160
+	speed = DEFAULT_SPEED
+	attack_power = DEFAULT_ATTACK_POWER
 
-	max_hp = 100
-	hp = max_hp
-	hp_regen_available = true
-	hp_regen_per_sec = 5
-
-	attack_damage = 1
-
-	set_color()
-
-func set_color():
-	hp_color = HP_COLOR
-	body_color = BODY_COLOR
 
 func _ready():
-	die_cpu_particles.color = HP_COLOR
-#endregion
+	health_component.set_values(DEFAULT_HP, 10)
+
+	collision = collision_shape
+	figure = circle_component
+
+	figure.set_figure_parameters(BORDER_RADIUS, BODY_RADIUS, BORDER_COLOR, BODY_COLOR, HP_COLOR)
+
+	die_particles.color = HP_COLOR
 
 
-#region Draw functions
-func redraw():
-	player_circle.queue_redraw()
-#endregion
-
-
-#region Move functions
 func move():
 		var input_move_direction_vector = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
 		move_direction_vector = input_move_direction_vector.normalized()
 		move_step()
-#endregion
+
+
+func die():
+	print("mertv")
