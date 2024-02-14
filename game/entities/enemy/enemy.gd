@@ -10,13 +10,13 @@ extends Entity
 
 
 const MIN_ANGLES_NUMBER = 3
-var angles_number : int
+var angles_number : int 
 
 
 var normalized_polygon : PackedVector2Array
 
 
-func _init(new_angles_number : int = MIN_ANGLES_NUMBER):
+func init(new_angles_number : int = MIN_ANGLES_NUMBER):
 	if new_angles_number < MIN_ANGLES_NUMBER:
 		new_angles_number = MIN_ANGLES_NUMBER
 	angles_number = new_angles_number

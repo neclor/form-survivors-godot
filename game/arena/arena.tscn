@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://buanp3d4h35yy"]
+[gd_scene load_steps=5 format=3 uid="uid://buanp3d4h35yy"]
 
 [ext_resource type="Script" path="res://game/arena/arena.gd" id="1_80kmj"]
-[ext_resource type="PackedScene" uid="uid://dv4wf1ij5ltho" path="res://game/arena/enemy_spawner.tscn" id="2_1cnye"]
 [ext_resource type="TileSet" uid="uid://c8binh38weqh7" path="res://resources/background_tile_set.tres" id="2_uvfe5"]
 [ext_resource type="PackedScene" uid="uid://bsr8ch0x408mx" path="res://game/entities/player/player.tscn" id="4_68i84"]
 [ext_resource type="TileSet" uid="uid://cl6t864yny6dq" path="res://resources/arena_tile_set.res" id="4_volk0"]
-[ext_resource type="PackedScene" uid="uid://blatymkqenhre" path="res://game/entities/enemy/enemy.tscn" id="6_vpomw"]
 
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_80kmj")
@@ -29,11 +27,7 @@ scale = Vector2(2, 2)
 tile_set = ExtResource("4_volk0")
 format = 2
 
-[node name="EnemySpawner" parent="." instance=ExtResource("2_1cnye")]
-
 [node name="Player" parent="." instance=ExtResource("4_68i84")]
 position = Vector2(263, 323)
-
-[node name="Enemy" parent="." instance=ExtResource("6_vpomw")]
 
 [connection signal="timeout" from="EnemySpawnerTimer" to="." method="_on_enemy_spawner_timer_timeout"]
