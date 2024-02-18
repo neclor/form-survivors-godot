@@ -6,11 +6,15 @@ extends Entity
 @onready var circle_component = $CircleComponent
 
 
-const DEFAULT_SPEED = 200
+const DEFAULT_SPEED = 150
 const DEFAULT_ATTACK_POWER = 1
 const DEFAULT_HP = 100
 const HP_COLOR = Color.RED
 const BODY_COLOR = Color("#800000")
+
+
+var level := 0
+var xp := 0
 
 
 func _init():

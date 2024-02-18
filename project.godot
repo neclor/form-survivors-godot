@@ -32,6 +32,7 @@ folder_colors={
 "res://core/": "gray",
 "res://game/": "blue",
 "res://game/arena/": "pink",
+"res://game/arena/enemy_spawner/": "orange",
 "res://game/entities/": "purple",
 "res://game/entities/enemy/": "red",
 "res://game/entities/player/": "blue",
